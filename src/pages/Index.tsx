@@ -17,16 +17,17 @@ const Index = () => {
     <div className="min-h-screen bg-slate-100">
       <Navigation onMenuToggle={toggleSidebar} />
       
-      <div className="flex pt-16">
+      <div className="flex pt-16 h-screen">
         <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         
-        <div className="flex-1 flex">
+        <div className="flex-1 flex relative">
           <MapContainer />
           
+          {/* Desktop filter panel - hidden by default, only shows when toggled */}
           <div className="hidden lg:block">
             <FilterPanel 
-              isOpen={true} 
-              onClose={() => {}} 
+              isOpen={filterPanelOpen} 
+              onClose={() => setFilterPanelOpen(false)} 
             />
           </div>
         </div>
@@ -38,17 +39,17 @@ const Index = () => {
           isOpen={filterPanelOpen} 
           onClose={() => setFilterPanelOpen(false)} 
         />
-        
-        {/* Mobile filter toggle button */}
-        <button
-          onClick={toggleFilterPanel}
-          className="fixed bottom-20 right-6 bg-slate-800 text-white p-3 rounded-full shadow-lg z-40"
-        >
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
-          </svg>
-        </button>
       </div>
+
+      {/* Filter toggle button - always visible at bottom right */}
+      <button
+        onClick={toggleFilterPanel}
+        className="fixed bottom-6 right-6 bg-slate-800 text-white p-3 rounded-full shadow-lg z-40 lg:z-30"
+      >
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clipRule="evenodd" />
+        </svg>
+      </button>
 
       <ExportButton />
     </div>

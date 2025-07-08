@@ -29,22 +29,9 @@ const MapContainer = () => {
               Integration with ArcGIS JavaScript API would be implemented here.
             </p>
             <div className="mt-4 text-xs text-slate-500">
-              Map controls and drawing tools will be overlay here
+              Map will cover the full available space
             </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Map controls overlay */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2">
-        <div className="bg-white rounded-lg shadow-lg p-2">
-          <button className="p-2 hover:bg-slate-100 rounded">🔍+</button>
-        </div>
-        <div className="bg-white rounded-lg shadow-lg p-2">
-          <button className="p-2 hover:bg-slate-100 rounded">🔍-</button>
-        </div>
-        <div className="bg-white rounded-lg shadow-lg p-2">
-          <button className="p-2 hover:bg-slate-100 rounded">🏠</button>
         </div>
       </div>
     </div>

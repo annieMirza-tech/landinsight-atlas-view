@@ -48,24 +48,18 @@ const FilterPanel = ({ isOpen, onClose }: FilterPanelProps) => {
     setSelectedCategories([]);
   };
 
+  if (!isOpen) return null;
+
   return (
     <>
       {/* Mobile overlay */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-          onClick={onClose}
-        />
-      )}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+        onClick={onClose}
+      />
       
       {/* Filter Panel */}
-      <div className={`
-        fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-white shadow-xl z-50
-        transform transition-transform duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-        lg:translate-x-0 lg:static lg:h-[calc(100vh-4rem)]
-        overflow-y-auto
-      `}>
+      <div className="fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-white shadow-xl z-50 lg:static lg:h-[calc(100vh-4rem)] overflow-y-auto">
         <div className="p-4 border-b lg:hidden">
           <div className="flex items-center justify-between">
             <h2 className="text-lg font-semibold flex items-center gap-2">
