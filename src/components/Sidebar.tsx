@@ -17,7 +17,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const [activeTool, setActivetool] = useState<string | null>(null);
+  const [activeTool, setActiveTool] = useState<string | null>(null);
 
   const tools = [
     { id: 'buffer', name: 'Buffer', icon: Circle, description: 'Create buffer zones' },
@@ -29,7 +29,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   ];
 
   const handleToolClick = (toolId: string) => {
-    setActiveTool(activeTools === toolId ? null : toolId);
+    setActiveTool(activeTool === toolId ? null : toolId);
   };
 
   return (
@@ -66,7 +66,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           <div className="space-y-2">
             {tools.map((tool) => {
               const Icon = tool.icon;
-              const isActive = activeTools === tool.id;
+              const isActive = activeTool === tool.id;
               
               return (
                 <Button
