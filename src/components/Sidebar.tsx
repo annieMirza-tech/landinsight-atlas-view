@@ -10,6 +10,12 @@ import {
   Ruler,
   X
 } from "lucide-react";
+import BufferForm from "./forms/BufferForm";
+import LineOfSightForm from "./forms/LineOfSightForm";
+import ElevationForm from "./forms/ElevationForm";
+import LayerForm from "./forms/LayerForm";
+import MeasureForm from "./forms/MeasureForm";
+import GeocodeForm from "./forms/GeocodeForm";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -18,6 +24,7 @@ interface SidebarProps {
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const [activeTool, setActiveTool] = useState<string | null>(null);
+  const [openForm, setOpenForm] = useState<string | null>(null);
 
   const tools = [
     { id: 'buffer', name: 'Buffer', icon: Circle, description: 'Create buffer zones' },
@@ -30,6 +37,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
 
   const handleToolClick = (toolId: string) => {
     setActiveTool(activeTool === toolId ? null : toolId);
+    setOpenForm(toolId);
+  };
+
+  const handleFormClose = () => {
+    setOpenForm(null);
+    setActiveTool(null);
   };
 
   return (
@@ -92,6 +105,32 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           </div>
         </div>
       </div>
+
+      {/* Forms */}
+      <BufferForm 
+        isOpen={openForm === 'buffer'} 
+        onClose={handleFormClose} 
+      />
+      <LineOfSightForm 
+        isOpen={openForm === 'line-of-sight'} 
+        onClose={handleFormClose} 
+      />
+      <ElevationForm 
+        isOpen={openForm === 'elevation'} 
+        onClose={handleFormClose} 
+      />
+      <LayerForm 
+        isOpen={openForm === 'layers'} 
+        onClose={handleFormClose} 
+      />
+      <MeasureForm 
+        isOpen={openForm === 'measure'} 
+        onClose={handleFormClose} 
+      />
+      <GeocodeForm 
+        isOpen={openForm === 'geocode'} 
+        onClose={handleFormClose} 
+      />
     </>
   );
 };
